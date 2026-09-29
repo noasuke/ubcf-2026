@@ -1,0 +1,16 @@
+from ubcf.models import Role, User
+from ubcf import db, bcrypt
+
+# create role
+role_admin = Role(name='admin')
+role_user = Role(name='user')
+
+db.session.add_all([role_admin, role_user])
+db.session.commit()
+
+# create admin
+pwd_hash = bcrypt.generate_password_hash('admin').decode('utf-8')
+admin = User(username='admin', email='admin@gmail.com', password=pwd_hash, role=role_admin)
+
+db.session.add(admin)
+db.session.commit()

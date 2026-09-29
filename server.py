@@ -1,0 +1,1 @@
+from ubcf import app
