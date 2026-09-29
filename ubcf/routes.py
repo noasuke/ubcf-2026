@@ -10,7 +10,8 @@ from flask import render_template, redirect, jsonify, url_for, request, flash
 def save_image(img):
   random_hex = secrets.token_hex(8)
   fn, fext = os.path.splitext(img.filename)
-  img_fn = random_hex + fext
+  img_fn = random_hex + '.jpg'
+  # img_fn = random_hex + fext
   img_path = os.path.join(app.root_path, 'static/images', img_fn)
 
   img.save(img_path)
